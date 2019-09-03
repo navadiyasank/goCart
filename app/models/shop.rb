@@ -19,22 +19,15 @@ class Shop < ActiveRecord::Base
     @theme = ShopifyAPI::Theme.find(:all).where(role: 'main').first
     @asset = ShopifyAPI::Asset.create(key: 'snippets/go-cart.liquid', value: "
       <script>
-        window.goCart = {
-          shopify_domain: '{{shop.permanent_domain}}',
-          app_url: '#{ENV['DOMAIN']}',
-          cart_total: 0
-        }
-        window.goCart.cart_total = {{ cart.total_price }}
-        console.log(window.goCart.cart)
         $( \"a[href='/cart']\" ).each(function( index ) {
           height = $( this ).height();
           b_class=$( this ).attr('class');
           {% if cart.item_count > 0 %}
-          	cart_image = 'cart.gif'
+          	cart_image = {{ cart.items.first.image | json }}
           {% else %}
-          	cart_image = 'cart.svg'
+          	cart_image = '#{ENV['DOMAIN']}/cart.svg'
           {% endif %}
-  			$( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='#{ENV['DOMAIN']}/\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'></a>\")
+  			$( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'></a>\")
 				});
       </script>
 
