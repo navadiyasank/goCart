@@ -19,16 +19,33 @@ class Shop < ActiveRecord::Base
     @theme = ShopifyAPI::Theme.find(:all).where(role: 'main').first
     @asset = ShopifyAPI::Asset.create(key: 'snippets/go-cart.liquid', value: "
       <script>
-        $( \"a[href='/cart']\" ).each(function( index ) {
-          height = $( this ).height();
-          b_class=$( this ).attr('class');
-          {% if cart.item_count > 0 %}
-          	cart_image = {{ cart.items.first.image | json }}
-          {% else %}
-          	cart_image = '#{ENV['DOMAIN']}/cart.svg'
-          {% endif %}
-  			$( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'></a>\")
-				});
+        window.goCart = {
+          shopify_domain: '{{shop.permanent_domain}}',
+          app_url: '#{ENV['DOMAIN']}',
+        }
+        $.ajax({
+          type:'GET',
+          url: window.goCart.app_url+'/frontend/get_gocart_details',
+          data : {shopify_domain : window.goCart.shopify_domain},
+          crossDomain: true,
+          success:function(data){
+            var goCart_is_active = data.is_active;
+            console.log('response==',data);
+            if(goCart_is_active){
+              $( \"a[href='/cart']\" ).each(function( index ) {
+                height = $( this ).height();
+                b_class=$( this ).attr('class');
+                {% if cart.item_count > 0 %}
+                  cart_image = {{ cart.items.last.image | json }}
+                {% else %}
+                  cart_image = '#{ENV['DOMAIN']}/cart.svg'
+                {% endif %}
+              $( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'></a>\")
+              });
+            }
+          }
+        });
+        
       </script>
 
     ", theme_id: @theme.id) rescue nil
