@@ -40,7 +40,7 @@ class Shop < ActiveRecord::Base
                 {% else %}
                   cart_image = '#{ENV['DOMAIN']}/cart.svg'
                 {% endif %}
-              $( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'></a>\")
+              $( this ).replaceWith(\"<a href='/cart' class='\"+b_class+\"'><img src='\"+cart_image+\"' alt='cart' style='height:\"+height+\"px;'>{% if cart.item_count > 0 %}<div id='CartCount' class='site-header__cart-count'><span>{{ cart.item_count }}</span><span class='icon__fallback-text medium-up--hide'>{{ 'layout.cart.items_count' | t: count: cart.item_count }}</span></div>{% endif %}</a>\")
               });
             }
           }

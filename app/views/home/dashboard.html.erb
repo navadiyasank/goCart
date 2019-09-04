@@ -1,4 +1,4 @@
-<div class="Polaris-Page">
+<div class="Polaris-Page" style="min-height: 80vh;">
   <div class="Polaris-Page-Header">
     <div class="Polaris-Page-Header__MainContent">
       <div class="Polaris-Page-Header__TitleActionMenuWrapper">
@@ -40,22 +40,23 @@
                         </ul>
                       </div>
                     <% end %>
-                    <div class="Polaris-FormLayout">
-
-                      <div class="Polaris-FormLayout__Item">
-                        <div class="">
-                          <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-lighter:#1d9ba4;">
-                            <label class="Polaris-Choice" for="Checkbox1"><span class="Polaris-Choice__Control"><span class="Polaris-Checkbox">
-                            <%= form.check_box :status,class: "Polaris-Checkbox__Input", id: "Checkbox1" %>
-                            <span class="Polaris-Checkbox__Backdrop"></span><span class="Polaris-Checkbox__Icon"><span class="Polaris-Icon"><svg viewBox="0 0 20 20" class="Polaris-Icon__Svg" focusable="false" aria-hidden="true">
-                              <path d="M8.315 13.859l-3.182-3.417a.506.506 0 0 1 0-.684l.643-.683a.437.437 0 0 1 .642 0l2.22 2.393 4.942-5.327a.437.437 0 0 1 .643 0l.643.684a.504.504 0 0 1 0 .683l-5.91 6.35a.437.437 0 0 1-.642 0"></path>
-                            </svg></span></span></span></span><span class="Polaris-Choice__Label">Status</span></label></div>
+                    <div class="Polaris-SettingAction">
+                      <%= form.hidden_field :status, value: !@shop.status %>
+                      <% if @shop.status %>
+                        <div class="Polaris-SettingAction__Setting">
+                          Go Cart App is <span class="Polaris-TextStyle--variationStrong">enabled</span>.
                         </div>
-                      </div>
-
-                      <div class="Polaris-FormLayout__Item">
-                        <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-lighter:#1d9ba4;"><button type="submit" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Update Shop</span></span></button></div>
-                      </div>
+                        <div class="Polaris-SettingAction__Action">
+                          <button type="submit" class="Polaris-Button"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Disable</span></span></button>
+                        </div>
+                      <% else %>
+                        <div class="Polaris-SettingAction__Setting">
+                          Go Cart App is <span class="Polaris-TextStyle--variationStrong">disabled</span>.
+                        </div>
+                        <div class="Polaris-SettingAction__Action">
+                          <button type="submit" class="Polaris-Button Polaris-Button--primary"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Enable</span></span></button>
+                        </div>
+                      <% end %>
                     </div>
                   <% end %>
                 </div>
