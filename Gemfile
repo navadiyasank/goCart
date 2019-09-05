@@ -63,3 +63,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'shopify_app'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rack-cors'
+gem 'jquery-minicolors-rails'

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class HomeController < AuthenticatedController
+# class HomeController < ApplicationController
 	before_action :set_current_shop
   def index
     @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
@@ -24,7 +25,7 @@ class HomeController < AuthenticatedController
   private
   	# Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:status)
+      params.require(:shop).permit(:status,:icon_color,:icon_shape,:icon_type)
     end
 
   	def set_current_shop

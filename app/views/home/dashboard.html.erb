@@ -1,5 +1,5 @@
 <div class="Polaris-Page" style="min-height: 80vh;">
-  <div class="Polaris-Page-Header">
+  <div class="Polaris-Page-Header Polaris-Page-Header--hasActionMenu">
     <div class="Polaris-Page-Header__MainContent">
       <div class="Polaris-Page-Header__TitleActionMenuWrapper">
         <div>
@@ -9,7 +9,13 @@
             </div>
           </div>
         </div>
+        <div class="Polaris-Page-Header__ActionMenuWrapper">
+          <div class="Polaris-ActionMenu">
+            <div class="Polaris-ActionMenu__ActionsLayout"></div>
+          </div>
+        </div>
       </div>
+      <div class="Polaris-Page-Header__PrimaryActionWrapper"><button type="button" class="Polaris-Button Polaris-Button--primary" id="btnSubmit"><span class="Polaris-Button__Content"><span class="Polaris-Button__Text">Save</span></span></button></div>
     </div>
   </div>
   <div class="Polaris-Page__Content">
@@ -20,7 +26,7 @@
             <div class="Polaris-TextContainer">
               <h2 class="Polaris-Heading">App Status</h2>
               <div class="Polaris-Layout__AnnotationDescription">
-                <p></p>
+                <p>Enable/Disable the app on single tap</p>
               </div>
             </div>
           </div>
@@ -61,6 +67,124 @@
                   <% end %>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="Polaris-Layout__AnnotatedSection">
+        <div class="Polaris-Layout__AnnotationWrapper">
+          <div class="Polaris-Layout__Annotation">
+            <div class="Polaris-TextContainer">
+              <h2 class="Polaris-Heading">App Settings</h2>
+              <div class="Polaris-Layout__AnnotationDescription">
+                <p>Customize cart icon as per your theme </p>
+              </div>
+            </div>
+          </div>
+          <div class="Polaris-Layout__AnnotationContent">
+            <div class="Polaris-Card">
+              <%= form_with(model: @shop, local: true,url: home_update_shop_path,html: { id: "settingForm" }) do |form| %>
+                <div class="Polaris-Card__Section">
+                  <% if @shop.errors.any? %>
+                    <div id="error_explanation">
+                      <h2><%= pluralize(@shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
+
+                      <ul>
+                      <% @shop.errors.full_messages.each do |message| %>
+                        <li><%= message %></li>
+                      <% end %>
+                      </ul>
+                    </div>
+                  <% end %>
+                  <div class="Polaris-FormLayout">
+                    <div class="Polaris-FormLayout__Item">
+                      <div class="">
+                        <div class="Polaris-Labelled__LabelWrapper">
+                          <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Icon Color</label></div>
+                        </div>
+                        <div class="Polaris-TextField">
+                          <%= form.text_field :icon_color,class: "Polaris-TextField__Input mini-color" %>
+                          <div class="Polaris-TextField__Backdrop"></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="Polaris-Card__Section">
+                  <div class="Polaris-FormLayout">
+                    <div class="Polaris-FormLayout__Item">
+                      <div class="Polaris-Labelled__LabelWrapper">
+                        <div class="Polaris-Label"><label class="Polaris-Label__Text bold-label">Item shape</label></div>
+                      </div>
+                      <fieldset class="Polaris-ChoiceList">
+                        <ul class="Polaris-ChoiceList__Choices">
+                          <li>
+                            <label class="Polaris-Choice" for="shop_icon_shape_circle">
+                              <span class="Polaris-Choice__Control">
+                                <div class="Polaris-RadioButton">
+                                  <%= form.radio_button :icon_shape, "circle",checked: true,class: "Polaris-RadioButton__Input" %>
+                                  <div class="Polaris-RadioButton__Backdrop"></div>
+                                  <div class="Polaris-RadioButton__Icon"></div>
+                                </div>
+                              </span>
+                              <span class="Polaris-Choice__Label">Circle</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="Polaris-Choice" for="shop_icon_shape_rectangle">
+                              <span class="Polaris-Choice__Control">
+                                <div class="Polaris-RadioButton">
+                                  <%= form.radio_button :icon_shape, "rectangle",class: "Polaris-RadioButton__Input" %>
+                                  <div class="Polaris-RadioButton__Backdrop"></div>
+                                  <div class="Polaris-RadioButton__Icon"></div>
+                                </div>
+                              </span>
+                              <span class="Polaris-Choice__Label">Rectangle</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <div class="Polaris-Card__Section">
+                  <div class="Polaris-FormLayout">
+                    <div class="Polaris-FormLayout__Item">
+                      <div class="Polaris-Labelled__LabelWrapper">
+                        <div class="Polaris-Label"><label class="Polaris-Label__Text bold-label">Icon Type</label></div>
+                      </div>
+                      <fieldset class="Polaris-ChoiceList">
+                        <ul class="Polaris-ChoiceList__Choices">
+                          <li>
+                            <label class="Polaris-Choice" for="shop_icon_type_cart">
+                              <span class="Polaris-Choice__Control">
+                                <div class="Polaris-RadioButton">
+                                  <%= form.radio_button :icon_type, "cart",checked: true,class: "Polaris-RadioButton__Input" %>
+                                  <div class="Polaris-RadioButton__Backdrop"></div>
+                                  <div class="Polaris-RadioButton__Icon"></div>
+                                </div>
+                              </span>
+                              <span class="Polaris-Choice__Label">Cart</span>
+                            </label>
+                          </li>
+                          <li>
+                            <label class="Polaris-Choice" for="shop_icon_type_bag">
+                              <span class="Polaris-Choice__Control">
+                                <div class="Polaris-RadioButton">
+                                  <%= form.radio_button :icon_type, "bag",class: "Polaris-RadioButton__Input" %>
+                                  <div class="Polaris-RadioButton__Backdrop"></div>
+                                  <div class="Polaris-RadioButton__Icon"></div>
+                                </div>
+                              </span>
+                              <span class="Polaris-Choice__Label">Bag</span>
+                            </label>
+                          </li>
+                        </ul>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
             </div>
           </div>
         </div>

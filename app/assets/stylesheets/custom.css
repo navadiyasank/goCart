@@ -1,0 +1,21 @@
+.bold-label {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.Polaris-TextField .minicolors,.Polaris-TextField .mini-color{
+	width:100%;
+}
+
+.minicolors-theme-default .minicolors-swatch, .minicolors-theme-default.minicolors-position-right .minicolors-swatch {
+  border-radius: 0px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  left: 0;
+  z-index: 11;
+  width: 40px;
+  height: 36px;
+  top: 0;
+}
+.minicolors-theme-default .minicolors-input{
+	padding-left: 45px;
+}
