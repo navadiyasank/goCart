@@ -4,7 +4,7 @@ class FrontendController < ApplicationController
 	def get_gocart_details
 		@shop = Shop.find_by_shopify_domain(params[:shopify_domain])
 		if @shop&.status
-			render json: {is_active: true,msg: "success"} and return
+			render json: {is_active: true, shape: @shop.icon_shape, color: @shop.icon_color, icon_type: @shop.icon_type,msg: "success"} and return
 		else
 			render json: { msg: "No data found" } and return
 		end

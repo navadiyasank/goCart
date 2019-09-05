@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2019_09_05_163931) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "status", default: true
-    t.string "icon_type"
-    t.string "icon_color"
-    t.string "icon_shape"
+    t.string "icon_type", default: "cart"
+    t.string "icon_color", default: "#000000"
+    t.string "icon_shape", default: "circle"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 
