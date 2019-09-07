@@ -55,6 +55,49 @@ class Shop < ActiveRecord::Base
         
       </script>
       <style>
+        .site-header__cart-count {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: absolute;
+          right: 0.4rem;
+          top: 0.2rem;
+          font-weight: bold;
+          background-color: #557b97;
+          color: #fff;
+          border-radius: 50%;
+          min-width: 1em;
+          height: 1em;
+        }
+        .go-cart .site-header__cart-count {
+          right: 4px;
+          top: -17px;
+        }
+        .go-cart.circle .site-header__cart-count {
+          top: -15px;
+        }
+        .go-bag .site-header__cart-count {
+          right: 6px;
+          top: -13px;
+        }
+        .visually-hidden, .icon__fallback-text {
+          position: absolute !important;
+          overflow: hidden;
+          clip: rect(0 0 0 0);
+          height: 1px;
+          width: 1px;
+          margin: -1px;
+          padding: 0;
+          border: 0;
+        }
+        .site-header__cart, .site-header__search, .site-header__account {
+          position: relative;
+        }
+        .site-header__cart-count span {
+          font-family: 'HelveticaNeue','Helvetica Neue',Helvetica,Arial,sans-serif;
+          font-size: calc(11em / 16);
+          line-height: 1;
+        }
         .go-cart-icon {
           position: relative;
         }
@@ -65,16 +108,19 @@ class Shop < ActiveRecord::Base
           border-radius: 50%;
           border-style: solid;
           border-width: 2px;
-          top: -9px;
-          right: 15px;
+          top: -6px;
+          right: 16px;
+        }
+        .go-bag.circle img.go-cart-item{
+          top: 2px;
+          right: 19px;
         }
         .go-cart-icon svg {
           height: auto;
           width: 30px;
         }
-        .circle .site-header__cart-count {
-          right: 3px;
-          top: -15px;
+        .go-bag.go-cart-icon svg{
+          width: 32px;
         }
         .rectangle img.go-cart-item{
           width: 18px;
@@ -82,35 +128,60 @@ class Shop < ActiveRecord::Base
           position: absolute;
           border-style: solid;
           border-width: 2px;
-          top: -8px;
+          top: -6px;
           right: 17px;
         }
-        .rectangle .site-header__cart-count {
-          right: 6px;
-          top: -16px;
-        }
-        .go-bag .site-header__cart-count {
-          right: 7px;
-          top: -10px;
-        }
         .go-bag.rectangle img.go-cart-item {
-          width: 14px;
+          width: 15px;
           height: 17px;
-          position: absolute;
-          border-style: solid;
-          border-width: 2px;
-          top: 4px;
+          top: 3px;
           right: 22px;
         }
-        .go-bag.circle img.go-cart-item {
-          width: 18px;
-          height: 18px;
-          position: absolute;
-          border-radius: 50%;
-          border-style: solid;
-          border-width: 2px;
-          top: 3px;
-          right: 19px;
+        
+        @media only screen and (max-width: 767px){
+          .go-cart-icon{
+            margin-top: 5px;
+          }
+          .go-cart-icon svg{
+            height: 43px;
+          }
+          .go-bag.go-cart-icon svg{
+            width: 33px;
+          }
+          .site-header__icon {
+            display: inline-block;
+            vertical-align: middle;
+            padding: 5px 11px 10px 10px;
+            margin: 0;
+            font-size: 1em;
+          }
+          .circle img.go-cart-item {
+            top: 10px;
+            right: 14px;
+          }
+          .go-bag.circle img.go-cart-item{
+            top: 20px;
+            right: 17px;
+          }
+          .go-cart.rectangle .site-header__cart-count {
+            right: 1px;
+            top: 0px;
+          }
+          .go-cart.circle .site-header__cart-count {
+            top: 0px;
+          }
+          .go-bag .site-header__cart-count {
+            right: 3px;
+            top: 4px;
+          }
+          .rectangle img.go-cart-item {
+            top: 11px;
+            right: 15px;
+          }
+          .go-bag.rectangle img.go-cart-item {
+            top: 21px;
+            right: 20px;
+          }
         }
       </style>
 
