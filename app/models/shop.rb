@@ -11,10 +11,9 @@ class Shop < ActiveRecord::Base
     asset_integrate
   end
 
-  #this will creates snippet in current theme and include snippet in theme.liquid
-  def asset_integrate
-  	puts "<===================create snippet=================>"
-  	ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
+  def asset_integrate1
+    puts "<===================create snippet=================>"
+    ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
     ShopifyAPI::Base.api_version = ShopifyApp.configuration.api_version
     @theme = ShopifyAPI::Theme.find(:all).where(role: 'main').first
     @asset = ShopifyAPI::Asset.create(key: 'snippets/go-cart.liquid', value: "<script>
@@ -219,6 +218,82 @@ class Shop < ActiveRecord::Base
           .go-bag.rectangle img.go-cart-item {
             top: 21px;
             right: 20px;
+          }
+        }
+      </style>
+
+    ", theme_id: @theme.id) rescue nil
+
+    @asset = ShopifyAPI::Asset.find('layout/theme.liquid', :params => { :theme_id => @theme.id}) rescue nil
+    if @asset.present?
+      @asset_value = @asset.value
+      @asset.update_attributes(theme_id: @theme.id,value: @asset_value.gsub("</body>","{% comment %}This is from goCart.{% endcomment %}{% include 'go-cart' %}</body>")) unless @asset_value.include?("{% include 'go-cart' %}")
+    end
+  end
+
+  #this will creates snippet in current theme and include snippet in theme.liquid
+  def asset_integrate
+  	puts "<===================create snippet=================>"
+  	ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
+    ShopifyAPI::Base.api_version = ShopifyApp.configuration.api_version
+    @theme = ShopifyAPI::Theme.find(:all).where(role: 'main').first
+    @asset = ShopifyAPI::Asset.create(key: 'snippets/go-cart.liquid', value: "<script>
+      function start(){
+        window.loadScript = function(url, callback) {
+          var script = document.createElement('script');
+          script.type = 'text/javascript';
+          // If the browser is Internet Explorer
+          if (script.readyState){
+            script.onreadystatechange = function() {
+              if (script.readyState == 'loaded' || script.readyState == 'complete') {
+                script.onreadystatechange = null;
+                callback();
+              }
+            };
+            // For any other browser
+          } else {
+            script.onload = function() {
+              callback();
+            };
+          }
+          script.src = url;
+          document.getElementsByTagName('head')[0].appendChild(script);
+        };
+
+        window.goCartStart = function($) {
+          window.goCart = {
+            shopify_domain: '{{shop.permanent_domain}}',
+            app_url: '#{ENV['DOMAIN']}',
+          }
+          $( \"a[href='/cart'] span\" ).css('animation', 'select-icon 1.5s linear infinite')
+        }
+      }
+
+      start();
+
+      if (typeof window.appton !== 'undefined'){
+        console.log(\"Jquery version==>\",jQuery.fn.jquery);
+          loadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js', function() {
+            jQuery340 = jQuery.noConflict(true);
+            goCartStart(jQuery340);
+          });
+      }else{
+        loadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.min.js', function() {
+          jQuery340 = jQuery.noConflict(true);
+          goCartStart(jQuery340);
+        });
+      }
+      </script>
+      <style>
+        @-webkit-keyframes select-icon {
+          0% {
+            -webkit-box-shadow: 0 0 0 0 rgba(239,115,115, 0.7);
+          }
+          70% {
+              -webkit-box-shadow: 0 0 0 10px rgba(239,215,215, 0);
+          }
+          100% {
+              -webkit-box-shadow: 0 0 0 0 rgba(239,215,215, 0);
           }
         }
       </style>
