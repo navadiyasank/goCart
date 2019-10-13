@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_05_163931) do
+ActiveRecord::Schema.define(version: 2019_10_13_081817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,9 @@ ActiveRecord::Schema.define(version: 2019_09_05_163931) do
     t.string "icon_type", default: "cart"
     t.string "icon_color", default: "#000000"
     t.string "icon_shape", default: "circle"
+    t.float "blink_speed", default: 1.5
+    t.string "blink_color", default: "rgba(255, 255, 255, 0.4)"
+    t.string "blink_wider", default: "10px"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 

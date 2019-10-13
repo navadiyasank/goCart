@@ -1,7 +1,7 @@
 class Shop < ActiveRecord::Base
   include ShopifyApp::SessionStorage
   after_create :set_configuration
-  after_update :set_configuration, if: ->(obj){ obj.saved_change_to_shopify_token? }
+  after_update :set_configuration, if: ->(obj){ obj.saved_change_to_shopify_token? || obj.saved_change_to_blink_speed? || obj.saved_change_to_blink_color? || obj.saved_change_to_blink_wider? }
 
   def api_version
     ShopifyApp.configuration.api_version
@@ -233,6 +233,9 @@ class Shop < ActiveRecord::Base
 
   #this will creates snippet in current theme and include snippet in theme.liquid
   def asset_integrate
+    blink_color_no_opacity = self.blink_color.split(",")
+    blink_color_no_opacity[-1] = " 0)"
+    blink_color_no_opacity = blink_color_no_opacity.join(',')
   	puts "<===================create snippet=================>"
   	ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
     ShopifyAPI::Base.api_version = ShopifyApp.configuration.api_version
@@ -265,7 +268,23 @@ class Shop < ActiveRecord::Base
             shopify_domain: '{{shop.permanent_domain}}',
             app_url: '#{ENV['DOMAIN']}',
           }
-          $( \"a[href='/cart'] span\" ).css('animation', 'select-icon 1.5s linear infinite')
+          $.ajax({
+            type:'GET',
+            url: window.goCart.app_url+'/frontend/get_gocart_details',
+            data : {shopify_domain : window.goCart.shopify_domain},
+            crossDomain: true,
+            success:function(data){
+              var goCart_is_active = data.is_active;
+              console.log('response==',data);
+              if(goCart_is_active){
+                $( \".gocart-blink\" ).css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
+                $( \"a[href='/cart']\" ).each(function( index ) {
+
+                  $(this).find('span').first().css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
+                })
+              }
+            }
+          })
         }
       }
 
@@ -287,13 +306,13 @@ class Shop < ActiveRecord::Base
       <style>
         @-webkit-keyframes select-icon {
           0% {
-            -webkit-box-shadow: 0 0 0 0 rgba(239,115,115, 0.7);
+            -webkit-box-shadow: 0 0 0 0 #{blink_color};
           }
           70% {
-              -webkit-box-shadow: 0 0 0 10px rgba(239,215,215, 0);
+              -webkit-box-shadow: 0 0 0 #{blink_wider} #{blink_color_no_opacity};
           }
           100% {
-              -webkit-box-shadow: 0 0 0 0 rgba(239,215,215, 0);
+              -webkit-box-shadow: 0 0 0 0 r#{blink_color_no_opacity};
           }
         }
       </style>

@@ -4,8 +4,9 @@ $("body").on("change",".Polaris-Checkbox__Input",function(){
 
 $(document).ready(function($) {
   $('.mini-color').minicolors({
-    format: 'hex',
+    format: 'rgb',
     control: 'hue',
+    opacity: true
   })
 });
 $(document).on('click', '#btnSubmit', function(event) {
