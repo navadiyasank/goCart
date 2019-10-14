@@ -312,7 +312,7 @@ class Shop < ActiveRecord::Base
               -webkit-box-shadow: 0 0 0 #{blink_wider} #{blink_color_no_opacity};
           }
           100% {
-              -webkit-box-shadow: 0 0 0 0 r#{blink_color_no_opacity};
+              -webkit-box-shadow: 0 0 0 0 #{blink_color_no_opacity};
           }
         }
       </style>
