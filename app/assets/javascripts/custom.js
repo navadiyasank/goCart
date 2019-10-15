@@ -30,3 +30,20 @@ function validateForm()
   }
   return true
 }
+$(document).on('change', '#shop_blink_speed, #shop_blink_color, #shop_blink_wider', function(event) {
+  $.ajax({
+    url: '/home/change_settings',
+    dataType: 'script',
+    data: {blink_speed: $('#shop_blink_speed').val(),blink_color: $('#shop_blink_color').val(),blink_width: $('#shop_blink_wider').val()},
+  })
+  .done(function() {
+    console.log("success");
+  })
+  .fail(function() {
+    console.log("error");
+  })
+  .always(function() {
+    console.log("complete");
+  });
+  
+});

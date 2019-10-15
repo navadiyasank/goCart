@@ -19,3 +19,23 @@
 .minicolors-theme-default .minicolors-input{
 	padding-left: 45px;
 }
+
+.cart-count-container{
+  width: 60px;
+  position: relative;
+}
+.cart-count-container svg{
+  width: 50px;
+  height: 50px;
+}
+.count-wrap{
+  background-color: #557b97;
+  color: #fff;
+  border-radius: 50%;
+  position: absolute;
+  top: -13px;
+  right: -1px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}

@@ -9,7 +9,9 @@ class HomeController < AuthenticatedController
   end
 
   def dashboard
-  	
+  	@blink_speed = @shop.blink_speed
+    @blink_color = @shop.blink_color
+    @blink_width = @shop.blink_wider
   end
 
   def update_shop
@@ -20,6 +22,12 @@ class HomeController < AuthenticatedController
         format.html { render :dashboard }
       end
     end
+  end
+
+  def change_settings
+    @blink_speed = params[:blink_speed]
+    @blink_color = params[:blink_color]
+    @blink_width = params[:blink_width]
   end
 
   private

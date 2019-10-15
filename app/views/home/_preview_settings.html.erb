@@ -1,0 +1,20 @@
+<% blink_color_no_opacity = @blink_color.split(",") %>
+<% blink_color_no_opacity[-1] = " 0)" %>
+<% blink_color_no_opacity = blink_color_no_opacity.join(',') %>
+<style>
+  @-webkit-keyframes select-icon {
+    0% {
+      -webkit-box-shadow: 0 0 0 0 <%= @blink_color %>;
+    }
+    70% {
+        -webkit-box-shadow: 0 0 0 <%= @blink_width %> <%= blink_color_no_opacity %>;
+    }
+    100% {
+        -webkit-box-shadow: 0 0 0 0 <%= blink_color_no_opacity %>;
+    }
+  }
+
+  .count-wrap{
+    animation: select-icon <%= @blink_speed %>s linear infinite;
+  }
+</style>
