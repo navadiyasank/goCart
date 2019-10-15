@@ -5,7 +5,7 @@
         <div>
           <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
             <div class="Polaris-Header-Title">
-              <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">Go Cart</h1>
+              <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">Dashboard</h1>
             </div>
           </div>
         </div>
@@ -26,7 +26,7 @@
             <div class="Polaris-TextContainer">
               <h2 class="Polaris-Heading">App Status</h2>
               <div class="Polaris-Layout__AnnotationDescription">
-                <p>Enable/Disable the app on single tap</p>
+                <p>Enable/Disable the app on single click</p>
               </div>
             </div>
           </div>
@@ -77,7 +77,7 @@
             <div class="Polaris-TextContainer">
               <h2 class="Polaris-Heading">App Settings</h2>
               <div class="Polaris-Layout__AnnotationDescription">
-                <p>Customize cart icon as per your theme </p>
+                <p>Customize blink to your preference</p>
               </div>
             </div>
           </div>
@@ -130,10 +130,15 @@
                         <div class="Polaris-Labelled__LabelWrapper">
                           <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Blink Speed</label></div>
                         </div>
-                        <div class="Polaris-TextField">
-                          <%= form.text_field :blink_speed,class: "Polaris-TextField__Input" %>
-                          <div class="Polaris-TextField__Backdrop"></div>
+                        <div class="Polaris-Connected">
+                          <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+                            <div class="Polaris-TextField Polaris-TextField--hasValue">
+                              <%= form.text_field :blink_speed,class: "Polaris-TextField__Input" %>
+                              <div class="Polaris-TextField__Backdrop"></div>
+                            </div>
+                          </div>
                         </div>
+                        <div class="Polaris-Labelled__HelpText" id="PolarisTextField6HelpText">Value should be between 0.5 to 3.0</div>
                       </div>
                     </div>
                   </div>
@@ -143,7 +148,7 @@
                     <div class="Polaris-FormLayout__Item">
                       <div class="">
                         <div class="Polaris-Labelled__LabelWrapper">
-                          <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Blink Wider</label></div>
+                          <div class="Polaris-Label"><label id="TextField3Label" for="TextField3" class="Polaris-Label__Text">Blink Width</label></div>
                         </div>
                         <div class="Polaris-TextField">
                           <%= form.text_field :blink_wider,class: "Polaris-TextField__Input" %>

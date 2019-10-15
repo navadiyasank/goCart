@@ -278,6 +278,7 @@ class Shop < ActiveRecord::Base
               console.log('response==',data);
               if(goCart_is_active){
                 $( \".gocart-blink\" ).css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
+                $('body').find('[data-cart-count]').css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
                 $( \"a[href='/cart']\" ).each(function( index ) {
 
                   $(this).find('span').first().css('animation', 'select-icon '+data.blink_speed+'s linear infinite');

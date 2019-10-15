@@ -29,8 +29,8 @@ class HomeController < AuthenticatedController
     end
 
   	def set_current_shop
-      # @current_shop = ShopifyAPI::Shop.current
-      # @shop = Shop.find_by_shopify_domain(ShopifyAPI::Shop.current.myshopify_domain)
-      @shop = Shop.last
+      @current_shop = ShopifyAPI::Shop.current
+      @shop = Shop.find_by_shopify_domain(ShopifyAPI::Shop.current.myshopify_domain)
+      # @shop = Shop.last
     end
 end
