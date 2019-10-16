@@ -29,12 +29,12 @@
   height: 50px;
 }
 .count-wrap{
-  background-color: #557b97;
+  background-color: #f02121;
   color: #fff;
   border-radius: 50%;
   position: absolute;
-  top: -13px;
-  right: -1px;
+  top: -9px;
+  right: 3px;
   width: 20px;
   height: 20px;
   text-align: center;
