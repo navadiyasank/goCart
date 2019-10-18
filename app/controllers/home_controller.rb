@@ -30,6 +30,12 @@ class HomeController < AuthenticatedController
     @blink_width = params[:blink_width]
   end
 
+  def faq_page
+  end
+
+  def contact_us
+  end
+
   private
   	# Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
