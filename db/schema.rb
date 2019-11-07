@@ -20,13 +20,13 @@ ActiveRecord::Schema.define(version: 2019_10_13_081817) do
     t.string "shopify_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: true
     t.string "icon_type", default: "cart"
     t.string "icon_color", default: "#000000"
     t.string "icon_shape", default: "circle"
     t.float "blink_speed", default: 1.5
     t.string "blink_color", default: "rgba(255, 255, 255, 0.4)"
     t.string "blink_wider", default: "10px"
+    t.boolean "status", default: false
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 
