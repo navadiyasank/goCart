@@ -266,6 +266,7 @@ class Shop < ActiveRecord::Base
         window.goCartStart = function($) {
           window.goCart = {
             shopify_domain: '{{shop.permanent_domain}}',
+            cart_items: {{cart.item_count}},
             app_url: '#{ENV['DOMAIN']}',
           }
           $.ajax({
@@ -276,7 +277,7 @@ class Shop < ActiveRecord::Base
             success:function(data){
               var goCart_is_active = data.is_active;
               console.log('response==',data);
-              if(goCart_is_active){
+              if(goCart_is_active && window.goCart.cart_items > 0){
                 $( \".gocart-blink\" ).css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
                 $('body').find('[data-cart-count]').css('animation', 'select-icon '+data.blink_speed+'s linear infinite');
                 $( \"a[href='/cart']\" ).each(function( index ) {
