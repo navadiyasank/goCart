@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_081817) do
+ActiveRecord::Schema.define(version: 2019_11_30_155322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,10 @@ ActiveRecord::Schema.define(version: 2019_10_13_081817) do
     t.string "blink_color", default: "rgba(255, 255, 255, 0.4)"
     t.string "blink_wider", default: "10px"
     t.boolean "status", default: false
+    t.string "title_text", default: "{{cart_items}} items missing"
+    t.string "title_animation_type", default: "blink"
+    t.boolean "is_paid"
+    t.boolean "is_advance"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 

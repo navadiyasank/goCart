@@ -14,5 +14,9 @@
 //= require activestorage
 //= require turbolinks
 //= require jquery.min
+//= require config
+//= require util
+//= require jquery.emojiarea
+//= require emoji-picker
 //= require jquery.minicolors
 //= require_tree .
