@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# class HomeController < AuthenticatedController
-class HomeController < ApplicationController
+class HomeController < AuthenticatedController
+# class HomeController < ApplicationController
 	before_action :set_current_shop
   def index
     @products = ShopifyAPI::Product.find(:all, params: { limit: 10 })
