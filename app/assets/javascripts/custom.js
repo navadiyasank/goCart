@@ -1,3 +1,4 @@
+var timer;
 $("body").on("change",".Polaris-Checkbox__Input",function(){
 	$(this).toggleClass('Polaris-Checkbox__Input--checked');
 });
@@ -21,6 +22,8 @@ $(document).ready(function($) {
     // It can be called as many times as necessary; previously converted input fields will not be converted again
     window.emojiPicker.discover();
   });
+
+  change_animation();
 });
 $(document).on('click', '#btnSubmit', function(event) {
   if(validateForm()){
@@ -60,3 +63,31 @@ $(document).on('change', '#shop_blink_speed, #shop_blink_color, #shop_blink_wide
   });
   
 });
+
+$(document).on('change', 'input[name="shop[title_animation_type]"]', function(event) {
+  change_animation();
+});
+
+function change_animation(){
+  page_title = $('#shop_title_text').val();
+  page_title = page_title.replace('{cart_items}', '2');
+  defaultTitle = '&nbsp;&nbsp;';position = 0;
+  title_animation_type = $("input[name='shop[title_animation_type]']:checked").val();
+  title = $('.advance-preview');
+  clearInterval(timer);
+  if(title_animation_type == 'blink'){
+    timer = setInterval(function() {
+      if(title.html() == defaultTitle)
+        title.html(page_title);
+      else
+        title.html(defaultTitle);
+    }, 1000);
+  }
+  else if(title_animation_type == 'scroll'){
+    timer = setInterval(function() {
+      title.text(page_title.substring(position, page_title.length) + page_title.substring(0, position)); 
+      position = position + 2;
+      if (position > page_title.length) position = 0
+    }, 1000)
+  }
+}

@@ -8,6 +8,7 @@ class Shop < ActiveRecord::Base
   end
 
   def set_configuration
+    self.update(is_paid: true,is_advance: true)
     asset_integrate
   end
 
@@ -289,7 +290,7 @@ class Shop < ActiveRecord::Base
                 console.log('texttttt---changed',data.title_text);
                 var title = $('title');
                 var defaultTitle = title.text();
-                var pageTitle = data.title_text;
+                var pageTitle = data.title_text.replace('{cart_items}', window.goCart.cart_items);
                 var timer;
                 position = 0;
                 if(data.title_animation_type == 'blink'){
@@ -308,9 +309,9 @@ class Shop < ActiveRecord::Base
                 else if(data.title_animation_type == 'scroll'){
                   $(window).blur(function() {
                     timer = setInterval(function() {
-                      document.title = pageTitle.substring(position, pageTitle.length) + pageTitle.substring(0, position); position++;
+                      document.title = pageTitle.substring(position, pageTitle.length) + pageTitle.substring(0, position); position = position + 2;;
                       if (position > pageTitle.length) position = 0
-                    }, 100)
+                    }, 1000)
                   }).focus(function() {
                     clearInterval(timer);
                     title.text(defaultTitle);

@@ -226,6 +226,7 @@
     });
     this.$editor.on('blur', function() {
       self.hasFocus = false;
+      change_animation();
     });
 
     // Assign a unique instance of an emojiMenu to
