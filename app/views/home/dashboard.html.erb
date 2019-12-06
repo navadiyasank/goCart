@@ -182,7 +182,7 @@
                 <div class="Polaris-TextContainer">
                   <h2 class="Polaris-Heading">Advance Settings</h2>
                   <div class="Polaris-Layout__AnnotationDescription">
-                    <p>Customizable animated menu title message</p>
+                    <p>Customizable animated page title message</p>
                   </div>
                 </div>
               </div>
@@ -193,12 +193,32 @@
                         <div class="Polaris-FormLayout__Item">
                           <div class="">
                             <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="shop_title_text" class="Polaris-Label__Text">Title Text</label></div>
+                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="cart_shop_title_text" class="Polaris-Label__Text">Title Text(when item in cart)</label></div>
                             </div>
                             <div class="Polaris-Connected">
                               <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
                                 <div class="Polaris-TextField Polaris-TextField--hasValue">
-                                  <%= form.text_field :title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
+                                  <%= form.text_field :cart_title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
+                                  <div class="Polaris-TextField__Backdrop"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="Polaris-Labelled__HelpText" id="PolarisTextField6HelpText">Use {cart_items} short code to display cart count</div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="Polaris-Card__Section">
+                      <div class="Polaris-FormLayout">
+                        <div class="Polaris-FormLayout__Item">
+                          <div class="">
+                            <div class="Polaris-Labelled__LabelWrapper">
+                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="no_cart_shop_title_text" class="Polaris-Label__Text">Title Text(when empty cart)</label></div>
+                            </div>
+                            <div class="Polaris-Connected">
+                              <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+                                <div class="Polaris-TextField Polaris-TextField--hasValue">
+                                  <%= form.text_field :no_cart_title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
                                   <div class="Polaris-TextField__Backdrop"></div>
                                 </div>
                               </div>

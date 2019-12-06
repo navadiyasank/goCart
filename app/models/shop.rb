@@ -273,7 +273,7 @@ class Shop < ActiveRecord::Base
           $.ajax({
             type:'GET',
             url: window.goCart.app_url+'/frontend/get_gocart_details',
-            data : {shopify_domain : window.goCart.shopify_domain},
+            data : {shopify_domain : window.goCart.shopify_domain,cart_items: window.goCart.cart_items},
             crossDomain: true,
             success:function(data){
               var goCart_is_active = data.is_active;

@@ -69,7 +69,7 @@ $(document).on('change', 'input[name="shop[title_animation_type]"]', function(ev
 });
 
 function change_animation(){
-  page_title = $('#shop_title_text').val();
+  page_title = $('#shop_cart_title_text').val();
   page_title = page_title.replace('{cart_items}', '2');
   defaultTitle = '&nbsp;&nbsp;';position = 0;
   title_animation_type = $("input[name='shop[title_animation_type]']:checked").val();

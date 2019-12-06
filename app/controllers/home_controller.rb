@@ -49,7 +49,7 @@ class HomeController < AuthenticatedController
   private
   	# Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:status,:icon_color,:icon_shape,:icon_type,:blink_speed,:blink_color,:blink_wider,:title_text,:title_animation_type)
+      params.require(:shop).permit(:status,:icon_color,:icon_shape,:icon_type,:blink_speed,:blink_color,:blink_wider,:cart_title_text,:title_animation_type,:cart_title_text,:no_cart_title_text)
     end
 
   	def set_current_shop
