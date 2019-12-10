@@ -193,10 +193,10 @@
                         <div class="Polaris-FormLayout__Item">
                           <div class="">
                             <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="cart_shop_title_text" class="Polaris-Label__Text">Title Text(when item in cart)</label></div>
+                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="cart_shop_title_text" class="Polaris-Label__Text">Title Text (when items added to cart)</label></div>
                             </div>
                             <div class="Polaris-Connected">
-                              <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
+                              <div class="Polaris-Connected__Item Polaris-Connected__Item--primary z-21">
                                 <div class="Polaris-TextField Polaris-TextField--hasValue">
                                   <%= form.text_field :cart_title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
                                   <div class="Polaris-TextField__Backdrop"></div>
@@ -213,7 +213,7 @@
                         <div class="Polaris-FormLayout__Item">
                           <div class="">
                             <div class="Polaris-Labelled__LabelWrapper">
-                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="no_cart_shop_title_text" class="Polaris-Label__Text">Title Text(when empty cart)</label></div>
+                              <div class="Polaris-Label"><label id="PolarisTextField6Label" for="no_cart_shop_title_text" class="Polaris-Label__Text">Title Text (when cart is empty)</label></div>
                             </div>
                             <div class="Polaris-Connected">
                               <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
@@ -291,9 +291,29 @@
               </div>
               <div class="Polaris-Layout__AnnotationContent">
                 <div class="Polaris-Card">
+                  <div class="Polaris-Card__Header">
+                    <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
+                      <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                        <h2 class="Polaris-Heading">Title Text Preview(when items added to cart)</h2>
+                      </div>
+                    </div>
+                  </div>
                   <div class="Polaris-Card__Section">
                     <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-lighter:#1d9ba4; display: flex; justify-content: center;">
-                      <div class="advance-preview">
+                      <div class="advance-preview-with-cart">
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Polaris-Card__Header">
+                    <div class="Polaris-Stack Polaris-Stack--alignmentBaseline">
+                      <div class="Polaris-Stack__Item Polaris-Stack__Item--fill">
+                        <h2 class="Polaris-Heading">Title Text Preview(when cart is empty)</h2>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="Polaris-Card__Section">
+                    <div style="--top-bar-background:#00848e; --top-bar-color:#f9fafb; --top-bar-background-lighter:#1d9ba4; display: flex; justify-content: center;">
+                      <div class="advance-preview-no-cart">
                       </div>
                     </div>
                   </div>
