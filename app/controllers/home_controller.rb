@@ -46,6 +46,10 @@ class HomeController < AuthenticatedController
   def contact_us
   end
 
+  def plan
+
+  end
+
   private
   	# Never trust parameters from the scary internet, only allow the white list through.
     def shop_params

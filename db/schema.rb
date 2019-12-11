@@ -20,18 +20,21 @@ ActiveRecord::Schema.define(version: 2019_11_30_155322) do
     t.string "shopify_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: true
+    t.boolean "status", default: false
     t.string "icon_type", default: "cart"
     t.string "icon_color", default: "#000000"
     t.string "icon_shape", default: "circle"
     t.float "blink_speed", default: 1.5
     t.string "blink_color", default: "rgba(255, 255, 255, 0.4)"
     t.string "blink_wider", default: "10px"
-    t.string "cart_title_text", default: "{cart_items} items missing"
+    t.string "cart_title_text", default: "💥 You have {cart_items} items in your cart."
     t.string "no_cart_title_text", default: "⚡️ Secret Sale ⚡️ Save 20% Off"
     t.string "title_animation_type", default: "blink"
     t.boolean "is_paid"
     t.boolean "is_advance"
+    t.string "charge_id"
+    t.string "charge_date"
+    t.string "shopify_plan_name"
     t.index ["shopify_domain"], name: "index_shops_on_shopify_domain", unique: true
   end
 

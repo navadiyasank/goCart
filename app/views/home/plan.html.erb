@@ -1,0 +1,171 @@
+<div style="--top-bar-background:#00848e; --top-bar-background-lighter:#1d9ba4; --top-bar-color:#f9fafb;">
+  <div class="Polaris-Page">
+    <div class="Polaris-Page-Header Polaris-Page-Header--hasActionMenu">
+      <div class="Polaris-Page-Header__MainContent">
+        <div class="Polaris-Page-Header__TitleActionMenuWrapper">
+          <div>
+            <div class="Polaris-Header-Title__TitleAndSubtitleWrapper">
+              <div class="Polaris-Header-Title">
+                <h1 class="Polaris-DisplayText Polaris-DisplayText--sizeLarge">Plan</h1>
+              </div>
+            </div>
+          </div>
+          <div class="Polaris-Page-Header__ActionMenuWrapper">
+            <div class="Polaris-ActionMenu">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="Polaris-Page__Content">
+      <div class="pricing_module">
+        <div class="card-box-payment">
+          <div class="card-box-payment">
+            <h3 class="m-b-20 a-center"> <b>Get More Done with Go Cart Pro! </b></h3>
+            <p class="a-center"> Volume Discount will always be free, but for some of you who need more, Volume Discount Pro is the perfect solution. Try for yourself.</p>
+          </div>
+            <div class="row">
+              <div class="partition">
+                <div class="columns">
+                  <ul class="price">
+                    <li class="header">Basic Plan</li>
+                    <li>Free</li>
+                    <li>App Status</li>
+                    <li>Blink Settings</li>
+                    <li>Blink Preview</li>
+                    <li>
+                      <% if @shop.is_paid %>
+                        <a href="<%= charges_deactivate_charge_path %>" class="plan_button">
+                          Free Plan
+                        </a>
+                      <% else %>
+                        <a href="#" class="plan_button">
+                          Current Plan
+                        </a>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div> 
+              <div class="partition">
+                <div class="columns">
+                  <ul class="price">
+                    <li class="header">Pro Plan</li>
+                    <li><sup>$</sup><span>2.99</span><em>/</em>month</li>
+                    <li>Advance Settings</li>
+                    <li>Title Animation Type</li>
+                    <li>Title Animation Preview</li>
+                    <li>Schedule sales</li>
+                    <li>
+                      <% if @shop.is_paid %>
+                        <a href="#" class="plan_button">
+                          Current Plan
+                        </a>
+                      <% else %>
+                        <a href="<%= charges_create_charge_path %>" class="plan_button">
+                          Upgrade to Pro
+                        </a>
+                      <% end %>
+                    </li>
+                  </ul>
+                </div>
+              </div> 
+          </div>
+          <div class="clearfix"></div>             
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .row{
+    display: table;
+    width: 100%;
+    margin-right: -15px;
+  }
+  .row:after,.row:before{
+    clear: both;
+  }
+  /* for payment module */
+  .card-box-payment{
+    padding: 28px;
+    border: 1px solid #dbe1e8;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -moz-border-radius: 4px;
+    background-color: #ffffff;
+  }
+  .pricing_module .price {
+    margin: 20px 0px;
+    border: 1px solid #e6e6e6;
+    padding: 0;
+  }
+  .pricing_module .price li.header {
+    color: #ffffff;
+    text-transform: uppercase;
+    font-size: 17px;
+    background: #5563c1;
+    font-weight: 600;
+  }
+  .pricing_module .price li:nth-child(1), .pricing_module .price li:nth-child(2) {
+    padding: 21px 5px;
+  }
+  .pricing_module .price li {
+    padding: 15px 5px;
+    text-align: center;
+    list-style: none;
+    border-bottom: 1px solid #e6e6e6;
+    color: #000;
+  }
+  .pricing_module .price li:nth-child(2) {
+    font-weight: 600;
+    color: #000;
+    font-size: 16px;
+  }
+  .pricing_module .price li:last-child {
+    border-bottom: none;
+  }
+  .pricing_module .price li sup {
+    font-size: 17px;
+  }
+  .pricing_module .price li span {
+    font-size: 22px;
+    color: #5563c1;
+  }
+  .pricing_module .price li em {
+    font-size: 22px;
+  }
+  .a-center{
+    text-align: center;
+  }
+  .partition{
+    width: 50%;
+    float: left;
+    padding: 15px;
+    padding-top: 0;
+  }
+  .partition:first-child {
+    padding-left: : 0px;
+  }
+  .partition:last-child {
+    padding-right: 0px;
+  }
+  .plan_button{
+    background-color: #5563c1;
+    border: 1px solid #5563c1 !important;
+    color: #fff !important;
+    padding: 10px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 3px;
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -ms-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+    text-decoration: none;
+  }
+
+/* End */
+</style>

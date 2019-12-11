@@ -5,5 +5,8 @@ class AddTitleTextAndTitleAnimationTypeToShop < ActiveRecord::Migration[5.2]
     add_column :shops, :title_animation_type, :string,default: "blink"
     add_column :shops, :is_paid, :boolean
     add_column :shops, :is_advance, :boolean
+    add_column :shops, :charge_id, :string
+    add_column :shops, :charge_date, :string
+    add_column :shops, :shopify_plan_name, :string
   end
 end

@@ -4,6 +4,11 @@ Rails.application.routes.draw do
   get 'home/change_settings'
   get 'home/faq_page'
   get 'home/contact_us'
+  get 'home/plan'
+  get 'home/index'
+  get "charges/create_charge"
+  get "charges/activate_charge"
+  get "charges/deactivate_charge"
   get 'gdpr_webhook/customers_redact'
   get 'gdpr_webhook/shop_redact'
   get 'gdpr_webhook/customers_data_request'

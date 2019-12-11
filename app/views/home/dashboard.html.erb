@@ -175,7 +175,7 @@
             </div>
           </div>
         </div>
-        <% if @shop.is_paid %>
+        <%# if @shop.is_paid %>
           <div class="Polaris-Layout__AnnotatedSection">
             <div class="Polaris-Layout__AnnotationWrapper">
               <div class="Polaris-Layout__Annotation">
@@ -197,7 +197,7 @@
                             </div>
                             <div class="Polaris-Connected">
                               <div class="Polaris-Connected__Item Polaris-Connected__Item--primary z-21">
-                                <div class="Polaris-TextField Polaris-TextField--hasValue">
+                                <div class="Polaris-TextField Polaris-TextField--hasValue <%= @shop.is_paid ? '' : 'premium' %>">
                                   <%= form.text_field :cart_title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
                                   <div class="Polaris-TextField__Backdrop"></div>
                                 </div>
@@ -217,7 +217,7 @@
                             </div>
                             <div class="Polaris-Connected">
                               <div class="Polaris-Connected__Item Polaris-Connected__Item--primary">
-                                <div class="Polaris-TextField Polaris-TextField--hasValue">
+                                <div class="Polaris-TextField Polaris-TextField--hasValue <%= @shop.is_paid ? '' : 'premium' %>">
                                   <%= form.text_field :no_cart_title_text, data: {emojiable: true},class: "Polaris-TextField__Input" %>
                                   <div class="Polaris-TextField__Backdrop"></div>
                                 </div>
@@ -238,7 +238,7 @@
                             <div class="Polaris-Stack Polaris-Stack--vertical">
                               <div class="Polaris-Stack__Item">
                                 <div>
-                                  <label class="Polaris-Choice" for="shop_title_animation_type_blink">
+                                  <label class="Polaris-Choice <%= @shop.is_paid ? '' : 'premium' %>" for="shop_title_animation_type_blink">
                                     <span class="Polaris-Choice__Control">
                                       <span class="Polaris-RadioButton">
                                         <%= form.radio_button :title_animation_type, 'blink', class: 'Polaris-RadioButton__Input' %>
@@ -255,7 +255,7 @@
                               </div>
                               <div class="Polaris-Stack__Item">
                                 <div>
-                                  <label class="Polaris-Choice" for="shop_title_animation_type_scroll">
+                                  <label class="Polaris-Choice <%= @shop.is_paid ? '' : 'premium' %>" for="shop_title_animation_type_scroll">
                                     <span class="Polaris-Choice__Control">
                                       <span class="Polaris-RadioButton">
                                         <%= form.radio_button :title_animation_type, 'scroll', class: 'Polaris-RadioButton__Input' %>
@@ -322,10 +322,12 @@
             </div>
           </div>
         <% end %>
-      <% end %>
+      <%# end %>
     </div>
   </div>
 </div>
 <div id="preview-css">
   <%= render 'preview_settings' %>
 </div>
+
+<%= render 'pro_popup' %>

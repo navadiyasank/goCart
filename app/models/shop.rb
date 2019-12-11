@@ -8,7 +8,11 @@ class Shop < ActiveRecord::Base
   end
 
   def set_configuration
-    self.update(is_paid: true,is_advance: true)
+    ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
+    ShopifyAPI::Base.api_version = ShopifyApp.configuration.api_version
+    @shop = ShopifyAPI::Shop.current
+    # self.update(is_paid: true,is_advance: true)
+    self.update(is_advance: true, shopify_plan_name: @shop.plan_name)
     asset_integrate
   end
 
@@ -238,8 +242,7 @@ class Shop < ActiveRecord::Base
     blink_color_no_opacity[-1] = " 0)"
     blink_color_no_opacity = blink_color_no_opacity.join(',')
   	puts "<===================create snippet=================>"
-  	ShopifyAPI::Base.site = "https://#{ShopifyApp.configuration.api_key}:#{self.shopify_token}@#{self.shopify_domain}/admin/"
-    ShopifyAPI::Base.api_version = ShopifyApp.configuration.api_version
+  	
     @theme = ShopifyAPI::Theme.find(:all).where(role: 'main').first
     @asset = ShopifyAPI::Asset.create(key: 'snippets/go-cart.liquid', value: "<script>
       function start(){
