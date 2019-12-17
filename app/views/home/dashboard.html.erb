@@ -182,7 +182,7 @@
                 <div class="Polaris-TextContainer">
                   <h2 class="Polaris-Heading">Advance Settings</h2>
                   <div class="Polaris-Layout__AnnotationDescription">
-                    <p>Customizable animated page title message</p>
+                    <p>Customizable animated page title message</p><a href="#" class="instruct_video">Refer Video</a>
                   </div>
                 </div>
               </div>
@@ -331,3 +331,27 @@
 </div>
 
 <%= render 'pro_popup' %>
+
+<div id="instrctVideo" style="display:none">
+  <div class="gocart_popupBox">
+    <div class="gocart_mainHead">       
+      <p class="gocart_popup-heading">Pro Features</p>
+      <span class="gocart_close">&times;</span>        
+    </div> 
+
+    <div class="gocart_mainContent">
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/el6OmqbCQwY"></iframe>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).on('click', '.instruct_video', function(event) {
+    $('#instrctVideo').show();
+    $('body').addClass('active_gocart');
+  });
+  $(document).on('click', '.gocart_close', function(event) {
+    $('#instrctVideo').hide();
+    $('body').removeClass('active_gocart');
+  });
+</script>
