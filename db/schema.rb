@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_11_30_155322) do
     t.string "shopify_token", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "status", default: false
+    t.boolean "status", default: true
     t.string "icon_type", default: "cart"
     t.string "icon_color", default: "#000000"
     t.string "icon_shape", default: "circle"
