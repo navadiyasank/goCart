@@ -60,7 +60,7 @@ end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
-gem 'shopify_app'
+gem 'shopify_app', '~> 11.7'
 gem 'dotenv-rails', groups: [:development, :test]
 gem 'rack-cors'
 gem 'jquery-minicolors-rails'
